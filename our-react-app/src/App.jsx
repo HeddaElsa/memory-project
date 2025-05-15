@@ -3,8 +3,6 @@ import { useState } from 'react';
 import Registration from './components/Registration';
 import Login from './components/Login';
 
-import MemoryGame from './components/MemoryGame';
-
 function App() {
   const [currentScreen, setCurrentScreen] = useState("Registration");
   const [error, setError] = useState("");
@@ -28,7 +26,7 @@ function App() {
     <div>
     {currentScreen === "Registration" && <Registration onRegistration={handleRegistration} />}
     {currentScreen === "Login" && <Login onLogin={handleLogin} />}
-    {currentScreen === "Memory" && <MemoryGame />}
+    {currentScreen === "Memory" && <Memory />}
   </div>
   )
 }
