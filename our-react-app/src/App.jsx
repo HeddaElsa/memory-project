@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Registration from './components/Registration';
+import Memory from './components/Memory';
 import Login from './components/Login';
 
 function App() {
