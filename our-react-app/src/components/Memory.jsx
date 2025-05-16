@@ -1,4 +1,4 @@
-import FetchAndShuffle from "./FetchAndShuffle.jsx"
+import FetchAndShuffle from "./FetchAndShuffle.jsx";
 
 function Memory() {
   
