@@ -7,6 +7,8 @@ const FetchAndShuffle = () => {
     const [dogImages, setDogImages] = useState([]);
     const [cards, setCards] = useState([])
     const [turns, setTurns] = useState(0);
+    const [choiceOne, setChoiceOne] = useState(null);
+    const [choiceTwo, setChoiceTwo] = useState(null);
 
     const fetchData = async () => {
         try {
