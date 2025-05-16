@@ -18,7 +18,7 @@ const FetchAndShuffle = () => {
         } catch (error) {
             console.error("Error fetching data:", error);
         }
-    }
+    };
 
     useEffect (() => {fetchData()} , []);
 
@@ -33,7 +33,29 @@ const FetchAndShuffle = () => {
         setCards(shuffled);
         setTurns(0);
     };
-    console.log("Cards array:", cards, turns);
+
+    const handleChoice = (card) => {
+        choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+    };  
+    
+    useEffect(() => {
+        if (choiceOne && choiceTwo) {
+            if (choiceOne.src === choiceTwo.src) {
+                console.log("You found a match!");
+                resetTurn();
+            } else {
+                console.log("Not a match!");
+                resetTurn()
+                // setTimeout(() => resetTurn(), 1000);
+            }
+        }
+    }, [choiceOne, choiceTwo]);
+
+    const resetTurn = () => {
+        setChoiceOne(null);
+        setChoiceTwo(null);
+        setTurns(prevTurns => prevTurns + 1);
+    }
 
         return (
         <div className="flex items-center justify-center h-screen bg-black">
@@ -43,7 +65,11 @@ const FetchAndShuffle = () => {
 
         <div className="card-grid">
             {cards.map((card) => (
-                <Card  key={card.id} card={card}/>      
+                <Card  
+                key={card.id} 
+                card={card}
+                handleChoice={handleChoice}
+                />      
             ))}
         </div>
         </div>
