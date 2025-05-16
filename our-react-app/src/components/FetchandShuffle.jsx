@@ -10,6 +10,7 @@ const FetchAndShuffle = () => {
     const [choiceOne, setChoiceOne] = useState(null);
     const [choiceTwo, setChoiceTwo] = useState(null);
 
+    // Fetching data from the API and feeding it to dogImages
     const fetchData = async () => {
         try {
             const response = await fetch ("https://dog.ceo/api/breeds/image/random/4")
@@ -22,35 +23,46 @@ const FetchAndShuffle = () => {
 
     useEffect (() => {fetchData()} , []);
 
+    // Shuffling the cards
     const shuffleCards = () => {
-
         const shuffled = [...dogImages, ...dogImages]
             .sort(() => Math.random() - 0.5)
             .map((dogImages) => ({
                     id: Math.random(),
                     src: dogImages.src,
+                    matched: false,
             }));
         setCards(shuffled);
         setTurns(0);
     };
 
+    // Handling the choice of cards
     const handleChoice = (card) => {
         choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
     };  
     
+    // Checking if the two choices are the same
     useEffect(() => {
         if (choiceOne && choiceTwo) {
             if (choiceOne.src === choiceTwo.src) {
-                console.log("You found a match!");
+                setCards(prevCards => {
+                    return prevCards.map(card => {
+                        if (card.src === choiceOne.src) {
+                            return { ...card, matched: true };
+                        } else {
+                            return card;
+                        }
+                    });
+                })
                 resetTurn();
             } else {
                 console.log("Not a match!");
                 resetTurn()
-                // setTimeout(() => resetTurn(), 1000);
             }
         }
     }, [choiceOne, choiceTwo]);
 
+    // Resetting the turn
     const resetTurn = () => {
         setChoiceOne(null);
         setChoiceTwo(null);
