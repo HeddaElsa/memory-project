@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react"
 import Card from "./card.jsx";
+import "./FetchandShuffle.css";
 
 const FetchAndShuffle = () => {
 
@@ -9,6 +10,7 @@ const FetchAndShuffle = () => {
     const [turns, setTurns] = useState(0);
     const [choiceOne, setChoiceOne] = useState(null);
     const [choiceTwo, setChoiceTwo] = useState(null);
+    const [disabled, setDisabled] = useState(false)
 
     // Fetching data from the API and feeding it to dogImages
     const fetchData = async () => {
@@ -43,36 +45,43 @@ const FetchAndShuffle = () => {
     
     // Checking if the two choices are the same
     useEffect(() => {
-        if (choiceOne && choiceTwo) {
-            if (choiceOne.src === choiceTwo.src) {
-                setCards(prevCards => {
-                    return prevCards.map(card => {
-                        if (card.src === choiceOne.src) {
-                            return { ...card, matched: true };
-                        } else {
-                            return card;
-                        }
-                    });
-                })
-                resetTurn();
-            } else {
-                console.log("Not a match!");
-                resetTurn()
-            }
+        
+    if (choiceOne && choiceTwo) {
+        setDisabled(true)
+        if (choiceOne.src === choiceTwo.src) {
+            console.log("Match!");
+            setCards(prevCards => {
+                return prevCards.map(card => {
+                    if (card.src === choiceOne.src) {
+                        return { ...card, matched: true };
+                    } else {
+                        return card;
+                    }
+                });
+            });
+            resetTurn();
+        } else {
+            console.log("Not a match!");
+            setTimeout(() => resetTurn(), 1000); 
         }
-    }, [choiceOne, choiceTwo]);
+    }
+}, [choiceOne, choiceTwo]);
 
     // Resetting the turn
     const resetTurn = () => {
         setChoiceOne(null);
         setChoiceTwo(null);
         setTurns(prevTurns => prevTurns + 1);
+        setDisabled(false)
     }
 
         return (
-        <div className="flex items-center justify-center h-screen bg-black">
+        <div className="shuffle-container">
+            <div>
+                <h1>Dog Memory Game </h1>
+            </div>
         <div>
-            <button onClick={shuffleCards} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Shuffle</button>
+            <button onClick={shuffleCards} className="shuffle-button">Shuffle</button>
         </div>
 
         <div className="card-grid">
@@ -81,6 +90,8 @@ const FetchAndShuffle = () => {
                 key={card.id} 
                 card={card}
                 handleChoice={handleChoice}
+                flipped={card === choiceOne || card === choiceTwo || card.matched}
+                disabled={disabled}
                 />      
             ))}
         </div>
