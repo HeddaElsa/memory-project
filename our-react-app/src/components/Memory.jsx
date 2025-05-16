@@ -1,10 +1,10 @@
-import FetchandShuffle from "./FetchandShuffle.jsx"
+import FetchAndShuffle from "./FetchAndShuffle.jsx";
 
 function Memory() {
   
   return (
   <div>
-     <FetchandShuffle/>
+     <FetchAndShuffle/>
   </div>
   )
 }
