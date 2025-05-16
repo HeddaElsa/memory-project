@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.shuffle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: rgba(0, 95, 120, 1);
+  font-family: 'Inter', sans-serif;
+}
+
+.shuffle-controls {
+  margin-bottom: 30px;
+}
+
+.shuffle-button {
+  padding: 12px 20px;
+  background-color: #00afc6;
+  color: white;
+  font-weight: 700;
+  font-size: 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.shuffle-button:hover {
+  background-color: #0ac0dd;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 10px;
+}
+
+.shuffle-container h1 {
+  font-weight: 600;
+  font-size: 36px;
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  font-family: 'Inter', sans-serif;
+}

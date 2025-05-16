@@ -1,2 +1,16 @@
 @import "tailwindcss";
 
+
+.back-image {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.card-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
