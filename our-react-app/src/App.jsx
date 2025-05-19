@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import Registration from './components/Registration';
-import Memory from './components/Memory';
 import Login from './components/Login';
+import FetchandShuffle from './components/FetchandShuffle';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("Registration");
@@ -17,7 +17,7 @@ function App() {
     const storedPassword = localStorage.getItem("password");
 
     if (username === storedUsername && password === storedPassword) {
-      setCurrentScreen("Memory");
+      setCurrentScreen("FetchandShuffle");
     } else {
       setError("Invalid username or password");
     }
@@ -27,7 +27,7 @@ function App() {
     <div>
     {currentScreen === "Registration" && <Registration onRegistration={handleRegistration} />}
     {currentScreen === "Login" && <Login onLogin={handleLogin} />}
-    {currentScreen === "Memory" && <Memory />}
+    {currentScreen === "FetchandShuffle" && <FetchandShuffle />}
   </div>
   )
 }
