@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "./Card.jsx";
 import "./Memory.css";
 
-const FetchAndShuffle = () => {
+const Memory = () => {
     const [dogImages, setDogImages] = useState([]);
     const [cards, setCards] = useState([]);
     const [turns, setTurns] = useState(0);
@@ -154,4 +154,4 @@ const FetchAndShuffle = () => {
     );
 };
 
-export default FetchAndShuffle;
+export default Memory;
