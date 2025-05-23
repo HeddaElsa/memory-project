@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Card from "./card.jsx";
-import "./FetchandShuffle.css";
+import Card from "./Card.jsx";
+import "./Memory.css";
 
-const FetchAndShuffle = () => {
+const Memory = () => {
     const [dogImages, setDogImages] = useState([]);
     const [cards, setCards] = useState([]);
     const [turns, setTurns] = useState(0);
@@ -11,10 +11,10 @@ const FetchAndShuffle = () => {
     const [choiceTwo, setChoiceTwo] = useState(null);
     const [disabled, setDisabled] = useState(false);
     const [score, setScore] = useState(0);
-    const [difficulty, setDifficulty] = useState("easy"); // easy, medium, hard
+    const [difficulty, setDifficulty] = useState("easy");
     const [gameStarted, setGameStarted] = useState(false);
     const [matches, setMatches] = useState(0);
-    const [totalPairs, setTotalPairs] = useState(4); // Default for easy
+    const [totalPairs, setTotalPairs] = useState(4);
 
     // Difficulty settings
     const difficultySettings = {
@@ -154,4 +154,4 @@ const FetchAndShuffle = () => {
     );
 };
 
-export default FetchAndShuffle;
+export default Memory;

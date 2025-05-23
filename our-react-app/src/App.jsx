@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Registration from './components/Registration';
 import Login from './components/Login';
-import FetchandShuffle from './components/FetchandShuffle';
+import Memory from './components/Memory';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("Registration");
@@ -27,7 +27,7 @@ function App() {
     <div>
     {currentScreen === "Registration" && <Registration onRegistration={handleRegistration} />}
     {currentScreen === "Login" && <Login onLogin={handleLogin} />}
-    {currentScreen === "FetchandShuffle" && <FetchandShuffle />}
+    {currentScreen === "FetchandShuffle" && <Memory />}
   </div>
   )
 }
