@@ -11,10 +11,10 @@ const Memory = () => {
     const [choiceTwo, setChoiceTwo] = useState(null);
     const [disabled, setDisabled] = useState(false);
     const [score, setScore] = useState(0);
-    const [difficulty, setDifficulty] = useState("easy"); // easy, medium, hard
+    const [difficulty, setDifficulty] = useState("easy");
     const [gameStarted, setGameStarted] = useState(false);
     const [matches, setMatches] = useState(0);
-    const [totalPairs, setTotalPairs] = useState(4); // Default for easy
+    const [totalPairs, setTotalPairs] = useState(4);
 
     // Difficulty settings
     const difficultySettings = {
