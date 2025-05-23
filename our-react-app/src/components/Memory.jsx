@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Card from "./card.jsx";
-import "./FetchandShuffle.css";
+import Card from "./Card.jsx";
+import "./Memory.css";
 
 const FetchAndShuffle = () => {
     const [dogImages, setDogImages] = useState([]);
