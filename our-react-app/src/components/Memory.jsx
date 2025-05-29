@@ -10,7 +10,6 @@ const Memory = () => {
     const [choiceOne, setChoiceOne] = useState(null);
     const [choiceTwo, setChoiceTwo] = useState(null);
     const [disabled, setDisabled] = useState(false);
-    const [score, setScore] = useState(0);
     const [difficulty, setDifficulty] = useState("easy");
     const [gameStarted, setGameStarted] = useState(false);
     const [matches, setMatches] = useState(0);
@@ -20,9 +19,9 @@ const Memory = () => {
 
     // Difficulty settings
     const difficultySettings = {
-        easy: { pairs: 4, timeLimit: null, pointsPerMatch: 10 },
-        medium: { pairs: 6, timeLimit: 60, pointsPerMatch: 20 },
-        hard: { pairs: 8, timeLimit: 45, pointsPerMatch: 30 }
+        easy: { pairs: 4, timeLimit: null },
+        medium: { pairs: 6, timeLimit: 60 },
+        hard: { pairs: 8, timeLimit: 45 }
     };
 
     // Fetching data from the API based on difficulty
@@ -60,7 +59,6 @@ const Memory = () => {
             }));
         setCards(shuffled);
         setTurns(0);
-        setScore(0);
         setMatches(0);
         setGameStarted(true);
     };
@@ -77,8 +75,6 @@ const Memory = () => {
             setDisabled(true);
             if (choiceOne.src === choiceTwo.src) {
                 console.log("Match!");
-                const pointsEarned = difficultySettings[difficulty].pointsPerMatch;
-                setScore(prev => prev + pointsEarned);
                 setMatches(prev => prev + 1);
                 
                 setCards(prevCards => {
@@ -140,7 +136,7 @@ const Memory = () => {
         if (matches > 0 && matches === totalPairs) {
             setGameOver(true);
             setDisabled(true);
-            alert(`Congratulations! You won with ${score} points in ${turns} turns!`);
+            alert(`Congratulations, you won in ${turns} turns!`);
         }
     }, [matches, totalPairs]);
 
@@ -155,7 +151,6 @@ const Memory = () => {
         setCards([]);
         setDogImages([]);
         setTurns(0);
-        setScore(0);
         setMatches(0);
         setChoiceOne(null);
         setChoiceTwo(null);
@@ -171,7 +166,6 @@ const Memory = () => {
                 <h1>Dog Memory Game</h1>
                 <div className="game-info">
                     <p>Turns: {turns}</p>
-                    <p>Score: {score}</p>
                     <p>Matches: {matches}/{totalPairs}</p>
                     {difficultySettings[difficulty].timeLimit && (
                         <p>Time Left: {timer !== null ? timer : difficultySettings[difficulty].timeLimit} s</p>
