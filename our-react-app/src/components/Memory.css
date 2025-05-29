@@ -15,16 +15,23 @@
   margin-bottom: 30px;
 }
 
+.button-container {
+  max-width: 400px;
+  width: 100%;
+}
+
 .shuffle-button {
-  padding: 12px 20px;
+  width: 100%;
+  padding: 12px;
   background-color: #00afc6;
   color: white;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 16px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  margin-top: 10px;
 }
 
 .shuffle-button:hover {
@@ -42,12 +49,11 @@
 }
 
 .shuffle-container h1 {
-  font-weight: 600;
-  font-size: 36px;
+  font-size: 40px;
   color: white;
-  margin-bottom: 20px;
+  font-weight: 700;
+  margin-bottom: 30px;
   text-align: center;
-  text-shadow: black 1px 1px 2px;
   font-family: 'Inter', sans-serif;
 }
 
@@ -61,13 +67,11 @@
 
 p {
   margin-right: 1em;
-  text-shadow: black 1px 1px 2px;
 }
 
 .difficulty-selector {
     margin-bottom: 2em;
     color: white;
-    text-shadow: black 1px 1px 2px;
 }
 
 .difficulty-selector select {

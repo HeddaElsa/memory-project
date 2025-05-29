@@ -183,7 +183,7 @@ const Memory = () => {
                             <option value="hard">Hard (8 pairs, 45 sec limit)</option>
                         </select>
                     </div>
-                    <div>
+                    <div className="button-container">
                         <button onClick={shuffleCards} className="shuffle-button">
                             Start Game
                         </button>
@@ -192,7 +192,7 @@ const Memory = () => {
             )}
 
             {gameStarted && (
-                <div>
+                <div className="button-container">
                     <button onClick={resetGame} className="shuffle-button">
                         Restart Game
                     </button>
