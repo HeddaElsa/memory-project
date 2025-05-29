@@ -47,7 +47,7 @@
   color: white;
   margin-bottom: 20px;
   text-align: center;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  text-shadow: black 1px 1px 2px;
   font-family: 'Inter', sans-serif;
 }
 
@@ -56,19 +56,26 @@
     justify-content: space-around;
     margin: 20px 0;
     font-size: 1.2em;
+    color: white;
+}
+
+p {
+  margin-right: 1em;
+  text-shadow: black 1px 1px 2px;
 }
 
 .difficulty-selector {
-    margin: 20px 0;
-    padding: 10px;
-    background: #f0f0f0;
-    border-radius: 5px;
+    margin-bottom: 2em;
+    color: white;
+    text-shadow: black 1px 1px 2px;
 }
 
 .difficulty-selector select {
     padding: 5px;
-    margin-left: 10px;
     font-size: 1em;
+    background: #f0f0f0;
+    color: black;
+    border-radius: 5px;
 }
 
 @media screen and (max-width: 720px) {
