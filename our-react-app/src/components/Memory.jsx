@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Card from "./Card.jsx";
+import Card from "./card.jsx";
 import "./Memory.css";
 
 const Memory = () => {
