@@ -1,36 +1,144 @@
+/* Card Component */
+
 .card {
-    position: relative;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  perspective: 1000px;
+  max-height: calc((100vh - 180px) / 4);
+}
+
+.card > div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease-spring);
 }
 
 .card img {
-    max-width: 180px;
-    min-width: 120px;
-    width: 100%;
-    height: 150px;
-    display: block;
-    object-fit: cover;
-    border-radius: 5px;
-    border: solid 2px white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  backface-visibility: hidden;
+  box-shadow: 0 2px 8px rgba(44, 40, 37, 0.15);
 }
 
+/* Card front (dog image) */
 .card .front {
-    transform: rotateY(90deg);
-    transition: all ease-in 0.2s;
-    position: absolute;
+  transform: rotateY(180deg);
+  border: 2px solid var(--color-warm-white);
 }
 
+/* Card back (question mark) */
 .card .back {
-    transition: all ease-in 0.2s;
-    transition-delay: 0.2s;
-    cursor: pointer;
+  cursor: pointer;
+  border: 2px solid var(--color-pebble);
+  background: var(--color-warm-white);
+  transition:
+    border-color var(--duration-fast) var(--ease-smooth),
+    box-shadow var(--duration-fast) var(--ease-smooth),
+    transform var(--duration-fast) var(--ease-spring);
 }
 
-.flipped .front {
-    transform: rotateY(0deg);
-    transition-delay: 0.2s;
+.card .back:hover {
+  border-color: var(--color-terracotta);
+  box-shadow: 0 4px 16px rgba(196, 101, 74, 0.2);
+  transform: translateY(-2px);
 }
 
-.flipped .back {
-    transform: rotateY(90deg);
-    transition-delay: 0s;
+.card .back:active {
+  transform: translateY(0);
+}
+
+/* Flipped state */
+.card > div.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Matched card styling */
+.card.matched .front {
+  border-color: var(--color-success);
+  box-shadow:
+    0 0 0 3px rgba(90, 138, 106, 0.2),
+    var(--shadow-card);
+}
+
+/* Staggered card entrance animation */
+.card {
+  animation: cardEntrance 0.4s var(--ease-spring) backwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.15s; }
+.card:nth-child(4) { animation-delay: 0.2s; }
+.card:nth-child(5) { animation-delay: 0.25s; }
+.card:nth-child(6) { animation-delay: 0.3s; }
+.card:nth-child(7) { animation-delay: 0.35s; }
+.card:nth-child(8) { animation-delay: 0.4s; }
+.card:nth-child(9) { animation-delay: 0.45s; }
+.card:nth-child(10) { animation-delay: 0.5s; }
+.card:nth-child(11) { animation-delay: 0.55s; }
+.card:nth-child(12) { animation-delay: 0.6s; }
+.card:nth-child(13) { animation-delay: 0.65s; }
+.card:nth-child(14) { animation-delay: 0.7s; }
+.card:nth-child(15) { animation-delay: 0.75s; }
+.card:nth-child(16) { animation-delay: 0.8s; }
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotateX(20deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotateX(0);
+  }
+}
+
+/* Match celebration pulse */
+@keyframes matchPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card.just-matched {
+  animation: matchPulse 0.4s var(--ease-spring);
+}
+
+/* Responsive card sizing */
+@media (max-width: 600px) {
+  .card {
+    max-height: calc((100vh - 150px) / 4);
+  }
+
+  .card img {
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 450px) {
+  .card {
+    max-height: calc((100vh - 130px) / 4);
+  }
+
+  .card img {
+    border-radius: 3px;
+    border-width: 1px;
+  }
+
+  .card .back:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(196, 101, 74, 0.15);
+  }
 }
